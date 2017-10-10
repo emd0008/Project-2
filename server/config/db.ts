@@ -5,7 +5,7 @@ let pool = mysql.createPool({
     host: 'localhost',
     user: 'blogUser',
     password: 'blogPassword',
-    database: 'Blogs'
+    database: 'BlogSchema'
 });
 
 function callProcedure(procedureName: string, args: Array<any> []): Promise<Array<Array<any>>>{

@@ -1,0 +1,24 @@
+<div class="blog-box">
+    <select ng-model="userId">
+        <option value="">Select a user</option>
+        <option ng-repeat="user in users" value="{{user.id}}">{{user.firstname}} {{user.lastname}}</option>
+    </select>
+    <select ng-model="categoryId">
+        <option value="">Select a category</option>
+        <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
+    </select>
+    <input type="text" ng-model="postTitle" placeholder="Title" id="title-field">
+    <input type="text" ng-model="postContent" placeholder="Start your post here" id="post-field">
+    <button class="standard-button" id="post-button" ng-click="postPost()">Post</button>
+</div>
+<div id="blog-list">
+    <a ng-href="/posts/{{post.id}}" ng-repeat="post in posts">
+        <div class="post">
+            <h2>{{post.title}}</h2>
+            <h3>{{post.userNameFirst}} {{post.userNameLast}}</h3>
+            <h3>{{post.categoryName}}</h3>
+            <p>{{post.content}}</p>
+            <h5>{{post.createdAt | date:'short'}}</h5>
+        </div>
+    </a>
+</div>

@@ -6,7 +6,7 @@ let pool = mysql.createPool({
     host: 'localhost',
     user: 'blogUser',
     password: 'blogPassword',
-    database: 'Blogs'
+    database: 'BlogSchema'
 });
 function callProcedure(procedureName, args) {
     return new Promise((resolve, reject) => {
