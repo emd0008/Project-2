@@ -29,7 +29,7 @@ body{
     border-bottom: 1px solid black;
     border: 2px solid black;
     margin: 15px;
-    background-color: pink;
+    background-color: plum;
     padding: 2em 1em;
     position: relative;
 }
@@ -61,3 +61,20 @@ body{
     border-color: red;
     color: red;
 }
+
+.heading-title{
+    color: blueviolet;
+}
+
+.heading-category{
+    color: rgb(93, 252, 98);
+}
+
+.heading-user{
+    color: purple;
+}
+
+p{
+    font-size: 20px;
+}
+

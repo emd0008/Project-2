@@ -14,9 +14,9 @@
 <div id="blog-list">
     <a ng-href="/posts/{{post.id}}" ng-repeat="post in posts">
         <div class="post">
-            <h2>{{post.title}}</h2>
-            <h3>{{post.userNameFirst}} {{post.userNameLast}}</h3>
-            <h3>{{post.categoryName}}</h3>
+            <h2 class="heading-title">{{post.title}}</h2>
+            <h4 class="heading-category">{{post.userNameFirst}} {{post.userNameLast}}</h4>
+            <h4 class="heading-user">{{post.categoryName}}</h4>
             <p>{{post.content}}</p>
             <h5>{{post.createdAt | date:'short'}}</h5>
         </div>
