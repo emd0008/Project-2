@@ -4,6 +4,10 @@ export function all(){
     return rows('GetPosts');
 }
 
+export function read(id: number){
+    return row('GetPost', [id]);
+}
+
 export function update(id: number, content: string){
     return empty('UpdatePost', [id, content]);
 }

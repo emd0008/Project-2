@@ -4,7 +4,10 @@
   "description": "##### Covalence",
   "main": "server/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ts": "tsc -p .",
+    "server": "node server/index.js",
+    "start": "nodemon -e ts --dir server/ --exec 'npm run build:ts && npm run server'"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +19,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.1",
     "mysql": "^2.15.0",
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.12.1",
+    "typescript": "^2.5.3"
   }
 }
