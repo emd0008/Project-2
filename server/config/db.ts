@@ -1,6 +1,6 @@
 import * as mysql from 'mysql';
 
-let pool = mysql.createPool({
+export let pool = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
     user: 'blogUser',

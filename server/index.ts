@@ -1,17 +1,21 @@
 import * as path from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
+import * as cookieParser from 'cookie-parser';
 import api from './api';
+import configurePassport from './config/passport';
 
-let clientDir = path.join(__dirname, '../client');
+const clientDir = path.join(__dirname, '../client');
 
-let app = express();
+const app = express();
 
 app.use(express.static(clientDir));
+app.use(cookieParser());
 app.use(bodyParser.json());
-app.use((req, res, next) => {
-    console.log('success');
-    next();
-});
+
+configurePassport(app);
+
 app.use('/api', api);
-app.listen(3000);
+app.listen(3000, () => {
+    console.log('Server listening on port 3000');
+});

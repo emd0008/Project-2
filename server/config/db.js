@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mysql = require("mysql");
-let pool = mysql.createPool({
+exports.pool = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
     user: 'blogUser',
@@ -10,7 +10,7 @@ let pool = mysql.createPool({
 });
 function callProcedure(procedureName, args) {
     return new Promise((resolve, reject) => {
-        pool.getConnection(function (err, connection) {
+        exports.pool.getConnection(function (err, connection) {
             if (err) {
                 reject(err);
             }
