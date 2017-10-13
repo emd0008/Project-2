@@ -11,3 +11,7 @@ export function readByEmail(email: string): Promise<models.IUser> {
 export function read(id:number): Promise<models.IUser> {
     return row('GetUser', [id]);
 }
+
+export function create(email: string, hash:string, firstname: string, lastname:string){
+    return row('InsertUser', [email, hash, firstname, lastname]);
+}

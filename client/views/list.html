@@ -7,7 +7,7 @@
         <option value="">Select a category</option>
         <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
     </select>
-    <input type="text" ng-model="postTitle" placeholder="Title" id="title-field">
+    <input type="text" ng-model="postTitle" placeholder="Title">
     <input type="text" ng-model="postContent" placeholder="Start your post here" id="post-field">
     <button class="standard-button" id="post-button" ng-click="postPost()">Post</button>
 </div>

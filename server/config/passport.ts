@@ -5,6 +5,7 @@ let MySQLStore = require('express-mysql-session')(session);
 import {Strategy as LocalStrategy} from 'passport-local';
 import * as userProc from '../procedures/user.proc';
 import {pool} from './db';
+import * as utils from '../utils';
 
 export default function configurePassport(app: express.Express){
     passport.use(new LocalStrategy({
@@ -16,10 +17,15 @@ export default function configurePassport(app: express.Express){
             if(!user){
                 return done(null, false, {message: 'Invaild email and/or password'});
             }
-            if(user.password !== password){
-                return done(null, false, {message: 'Invalid email and/or password'});
-            }
-            return done(null, user);
+            return utils.checkPassword(password, user.password)
+            .then((matches) => {
+                if(matches){
+                    delete user.password;
+                    return done(null, user);
+                }else{
+                    return done(null, false, {message: 'Invalid email and/or password'});
+                }
+            });
         }, (err) => {
             return done(err);
         });

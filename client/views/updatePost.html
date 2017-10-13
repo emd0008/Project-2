@@ -1,4 +1,13 @@
 <div id="blog-list">
-    <textarea ng-model="post.content" id="post-content" cols="115" rows="25"></textarea>
-    <button id="update-button" class="standard-button" ng-click="updatePost()">Update</button>
+    <form ng-submit="update()">
+        <div id="new-atttributes">
+            <input type="text" ng-model="post.title" placeholder="New Title" id="title-field"/>
+            <select ng-model="post.categoryName">
+                <option value="" id="category-select">Select a category</option>
+                <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
+            </select>
+        </div>
+        <textarea ng-model="post.content" id="post-content" cols="50" rows="10"></textarea>
+        <button id="update-button" class="standard-button" ng-click="update()">Update</button>
+    </form>
 </div>

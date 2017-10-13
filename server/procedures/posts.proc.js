@@ -9,8 +9,8 @@ function read(id) {
     return db_1.row('GetPost', [id]);
 }
 exports.read = read;
-function update(id, content) {
-    return db_1.empty('UpdatePost', [id, content]);
+function update(id, title, content, categoryid) {
+    return db_1.empty('UpdatePost', [id, title, content, categoryid]);
 }
 exports.update = update;
 function del(id) {

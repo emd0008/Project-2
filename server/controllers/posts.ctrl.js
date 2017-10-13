@@ -12,12 +12,12 @@ router.route('/')
         console.log(err);
         res.sendStatus(500);
     });
-})
-    .post((req, res) => {
+});
+router.post('/', (req, res) => {
     let newPost = req.body;
     procedures.insert(newPost.title, newPost.userid, newPost.categoryid, newPost.content)
-        .then((id) => {
-        res.status(201).send(id);
+        .then((response) => {
+        res.send(response);
     }).catch((err) => {
         console.log(err);
         res.sendStatus(500);
@@ -34,7 +34,7 @@ router.route('/:id')
     });
 })
     .put((req, res) => {
-    procedures.update(req.params.id, req.body.content)
+    procedures.update(req.params.id, req.body.title, req.body.content, req.body.categoryid)
         .then(() => {
         res.sendStatus(204);
     }).catch((err) => {
