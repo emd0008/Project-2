@@ -13,15 +13,18 @@ angular.module('blog', [
         })
         .when('/posts', {
             templateUrl: 'views/list.html',
-            controller: 'BlogListController'
+            controller: 'BlogListController',
+            requiresLogin: true
         })
         .when('/posts/:id/update', {
             templateUrl: 'views/updatePost.html',
-            controller: 'UpdatePostController'
+            controller: 'UpdatePostController',
+            requiresLogin: true
         })
         .when('/posts/:id', {
             templateUrl: 'views/singlePost.html',
-            controller: 'SinglePostController'
+            controller: 'SinglePostController',
+            requiresLogin: true
         })
         .when('/users', {
             templateUrl: 'views/user_list.html',

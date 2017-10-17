@@ -13,7 +13,7 @@ router.post('/login', (req, res, next) => {
             return res.sendStatus(500);
         }
         if(!user){
-            return res.sendStatus(401).send(info);
+            return res.status(401).send(info);
         }
         req.logIn(user, (err) => {
             if(err){
@@ -25,6 +25,28 @@ router.post('/login', (req, res, next) => {
             }
         });
     })(req, res, next);
+});
+
+router.get('/', (req, res) => {
+    procedures.all()
+    .then((users) => {
+        res.send(users);
+    }).catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+    });
+});
+
+router.post('/', (req, res) => {
+    utils.encryptPassword(req.body.password)
+    .then((hash) => {
+        return procedures.create(req.body.firstname, req.body.lastname, req.body.email, hash);
+    }).then((id) => {
+        res.send(id);
+    }).catch((err) => {
+        console.log(err);
+        res.sendStatus(500);
+    });
 });
 
 router.all('*', auth.isLoggedIn);
@@ -49,7 +71,7 @@ router.route('/').get(auth.isAdmin, (req, res) => {
 }).post(auth.isAdmin, (req, res) => {
     utils.encryptPassword(req.body.password)
     .then((hash) => {
-        return procedures.create(req.body.email, hash, req.body.firstname, req.body.lastname);
+        return procedures.create(req.body.firstname,  req.body.lastname, req.body.email, hash);
     }).then((id) => {
         res.status(201).send(id);
     }).catch((err) => {

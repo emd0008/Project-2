@@ -1,3 +1,6 @@
+<div class="page-header">
+    <h1>Blog List</h1>
+</div>
 <div class="blog-box">
     <select ng-model="userId">
         <option value="">Select a user</option>
@@ -9,16 +12,16 @@
     </select>
     <input type="text" ng-model="postTitle" placeholder="Title">
     <input type="text" ng-model="postContent" placeholder="Start your post here" id="post-field">
-    <button class="standard-button" id="post-button" ng-click="postPost()">Post</button>
+    <button class="standard-button btn btn-info btn-lg" id="post-button" ng-click="postPost()">Post</button>
 </div>
-<div id="blog-list">
-    <a ng-href="/posts/{{post.id}}" ng-repeat="post in posts">
-        <div class="post">
+<div class="panel panel-default" id="blog-list">
+        <div class="post" ng-repeat="post in posts">
             <h2 class="heading-title">{{post.title}}</h2>
             <h4 class="heading-category">{{post.userNameFirst}} {{post.userNameLast}}</h4>
             <h4 class="heading-user">{{post.categoryName}}</h4>
             <p>{{post.content}}</p>
             <h5>{{post.createdAt | date:'short'}}</h5>
+            <a ng-href="/posts/{{post.id}}" ng-repeat="post in posts">Read!</a>
         </div>
     </a>
 </div>

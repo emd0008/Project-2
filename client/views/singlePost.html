@@ -5,9 +5,9 @@
             <h4 class="heading-user">{{post.userNameFirst}} {{post.userNameLast}}</h4>
             <p>{{post.content}}</p>
             <h5>{{post.createdAt | date:'short'}}</h5>
-            <div class="button-block">
-                <button class="standard-button" ng-click="goToUpdate()">Update</button>
-                <button class="standard-button red" ng-click="deletePost()">Delete</button>
+            <div class="button-block btn-group btn-group-lg">
+                <button class="standard-button btn btn-primary" ng-click="goToUpdate()">Update</button>
+                <button class="standard-button red btn btn-primary" ng-click="deletePost()">Delete</button>
             </div>
     </div>
 </div>

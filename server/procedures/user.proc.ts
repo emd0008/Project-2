@@ -12,6 +12,6 @@ export function read(id:number): Promise<models.IUser> {
     return row('GetUser', [id]);
 }
 
-export function create(email: string, hash:string, firstname: string, lastname:string){
-    return row('InsertUser', [email, hash, firstname, lastname]);
+export function create(firstname: string, lastname:string, email: string, hash:string){
+    return row('InsertUser', [firstname, lastname, email, hash]);
 }

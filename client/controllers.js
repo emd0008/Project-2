@@ -4,7 +4,7 @@ angular.module('blog.controllers', [])
 }])
 .controller('LoginController', ['$scope', '$location', 'UserService', function($scope, $location, UserService){
     UserService.me()
-    .then((loggedInUser) => {
+    .then((suc) => {
         redirect();
     });
 
@@ -12,8 +12,8 @@ angular.module('blog.controllers', [])
         let dest = $location.search().dest;
         if(!dest){
             dest = '/';
+            $location.path(dest).search('dest', null);            
         }
-        $location.replace().path(dest).search('dest', null);
     }
 
     $scope.login = function(){

@@ -13,7 +13,7 @@ function read(id) {
     return db_1.row('GetUser', [id]);
 }
 exports.read = read;
-function create(email, hash, firstname, lastname) {
-    return db_1.row('InsertUser', [email, hash, firstname, lastname]);
+function create(firstname, lastname, email, hash) {
+    return db_1.row('InsertUser', [firstname, lastname, email, hash]);
 }
 exports.create = create;
