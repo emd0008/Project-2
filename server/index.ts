@@ -22,6 +22,6 @@ app.use(prerender);
 
 app.use('/api', api);
 app.get('*', stateRouting);
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log('Server listening on port 3000');
 });
