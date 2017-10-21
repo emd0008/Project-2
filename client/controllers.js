@@ -2,18 +2,41 @@ angular.module('blog.controllers', [])
 .controller('UserListController', ['$scope', 'User', function($scope, User){
     $scope.users = User.query();
 }])
+.controller('ContactController', ['SEOService', '$location', function(SEOService, $location){
+    SEOService.setSEO({
+        title: 'Blog Central',
+        image: 'http://' + $location.host() + '/images/contact-us-graphic.png',
+        url: $location.url(),
+        description: 'Blog Central: For all your blogging needs'
+    });
+}])
+.controller('DonationController', ['$scope', function($scope){
+    let elements = stripe.elements();
+    let card = elements.create('card');
+    card.amount('#card-field');
+
+    $scope.process = function(){
+        stripe.createToken(card).then((result) => {
+            if(result.error){
+                $scope.error = result.error.message;
+            }else{
+
+            }
+        });
+    }
+}])
 .controller('LoginController', ['$scope', '$location', 'UserService', function($scope, $location, UserService){
     UserService.me()
-    .then((suc) => {
+    .then((success) => {
         redirect();
     });
 
     function redirect(){
         let dest = $location.search().dest;
         if(!dest){
-            dest = '/';
-            $location.path(dest).search('dest', null);            
+            dest = '/posts';
         }
+        $location.path(dest).search('dest', null);                                        
     }
 
     $scope.login = function(){

@@ -1,4 +1,12 @@
 angular.module('blog.services', [])
+.service('SEOService', ['$rootScope', function($rootScope){
+    this.setSEO = function(data){
+        $rootScope.blog = {};
+        for(var p in data){
+            $rootScope.blog[p] = data[p];
+        }
+    }
+}])
 .service('UserService', ['$http', '$location', function($http, $location){
     let currentUser;
 

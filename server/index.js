@@ -4,6 +4,7 @@ const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const prerender = require('prerender-node');
 const api_1 = require("./api");
 const routing_mw_1 = require("./middleware/routing.mw");
 const passport_1 = require("./config/passport");
@@ -13,6 +14,8 @@ app.use(express.static(clientDir));
 app.use(cookieParser());
 app.use(bodyParser.json());
 passport_1.default(app);
+prerender.set('prerenderToken', 'YOUR_TOKEN');
+app.use(prerender);
 app.use('/api', api_1.default);
 app.get('*', routing_mw_1.default);
 app.listen(3000, () => {

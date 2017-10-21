@@ -35,6 +35,10 @@ angular.module('blog', [
             templateUrl: 'views/login.html',
             controller: 'LoginController'
         })
+        .when('/donations', {
+            templateUrl: 'views/creditcard.html',
+            controller: 'DonationController'
+        })
         .otherwise({
             redirectTo: '/'
         });

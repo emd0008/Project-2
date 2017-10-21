@@ -2,6 +2,7 @@ import * as path from 'path';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
+const prerender = require('prerender-node');
 import api from './api';
 import stateRouting from './middleware/routing.mw';
 import configurePassport from './config/passport';
@@ -15,6 +16,9 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 configurePassport(app);
+
+prerender.set('prerenderToken', 'YOUR_TOKEN');
+app.use(prerender);
 
 app.use('/api', api);
 app.get('*', stateRouting);

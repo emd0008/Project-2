@@ -4,8 +4,10 @@ const express = require("express");
 const posts_ctrl_1 = require("./controllers/posts.ctrl");
 const users_ctrl_1 = require("./controllers/users.ctrl");
 const categories_ctrl_1 = require("./controllers/categories.ctrl");
+const donations_ctrl_1 = require("./controllers/donations.ctrl");
 let router = express.Router();
 router.use('/posts', posts_ctrl_1.default)
     .use('/users', users_ctrl_1.default)
-    .use('/categories', categories_ctrl_1.default);
+    .use('/categories', categories_ctrl_1.default)
+    .use('/donations', donations_ctrl_1.default);
 exports.default = router;
